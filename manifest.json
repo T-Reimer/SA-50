@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Precision Popup Killer",
+  "version": "0.1.0",
+  "description": "Surgically removes intrusive popups and overlays using configurable CSS selectors.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Precision Popup Killer",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}

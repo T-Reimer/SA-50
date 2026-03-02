@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precision Popup Killer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Precision Popup Killer</h1>
+      <p class="subtitle" id="current-domain">Loading…</p>
+    </header>
+
+    <main>
+      <section id="section-global">
+        <h2>Global Rules</h2>
+        <div id="global-rules-list" class="rules-list"></div>
+        <button id="add-global-rule" class="btn btn-primary">+ Add Rule</button>
+      </section>
+
+      <section id="section-site">
+        <h2>Site Rules</h2>
+        <p class="section-subtitle">Rules for this site</p>
+        <div id="site-rules-list" class="rules-list"></div>
+        <button id="add-site-rule" class="btn btn-primary">+ Add Rule</button>
+      </section>
+    </main>
+
+    <!-- Hidden rule form template -->
+    <template id="rule-form-template">
+      <form class="rule-form" autocomplete="off">
+        <div class="form-field">
+          <label>Match Selector <span class="required">*</span></label>
+          <input
+            type="text"
+            name="matchSelector"
+            placeholder=".modal, #popup"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label>Click Selector <span class="optional">(optional)</span></label>
+          <input type="text" name="clickSelector" placeholder=".close-btn" />
+        </div>
+        <div class="form-field">
+          <label
+            >Closer Selector <span class="optional">(optional)</span></label
+          >
+          <input type="text" name="closerSelector" placeholder=".overlay" />
+        </div>
+        <div class="form-field">
+          <label>Method</label>
+          <select name="method">
+            <option value="nuke">nuke — remove from DOM</option>
+            <option value="hide">hide — display: none</option>
+            <option value="click">click — simulate click</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary cancel-btn">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </template>
+
+    <div id="status-msg" class="hidden" aria-live="polite"></div>
+
+    <script src="popup.js" defer></script>
+  </body>
+</html>
